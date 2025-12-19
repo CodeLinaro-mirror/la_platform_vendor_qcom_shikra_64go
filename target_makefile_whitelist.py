@@ -80,7 +80,7 @@ VENDOR_KERNEL_WHITELIST = {}
 
 VENDOR_FOREACH_WHITELIST = {
     "device/qcom/common/utils.mk",
-    "device/qcom/shikra_64/shikra_64.mk",
+    "device/qcom/shikra_64go/shikra_64go.mk",
     "device/qcom/wlan/shikra_64/BoardConfigWlan.mk",
     "device/qcom/wlan/shikra_64/wlan.mk",
     "vendor/qcom/opensource/audio-hal/primary-hal/configs/shikra/shikra.mk",
@@ -163,7 +163,7 @@ VENDOR_OVERRIDE_WHITELIST = {
 }
 
 VENDOR_SOONG_WHITELIST = {
-    "device/qcom/shikra_64/BoardConfig.mk",
+    "device/qcom/shikra_64go/BoardConfig.mk",
     "device/qcom/vendor-common/base.mk",
     "hardware/qcom/display/config/display-product.mk",
     "vendor/qcom/opensource/audio-hal/primary-hal/configs/audio_vendor_product.mk",

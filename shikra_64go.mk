@@ -1,5 +1,5 @@
 TARGET_BOARD_PLATFORM := shikra
-TARGET_BOARD_SUFFIX := _64
+TARGET_BOARD_SUFFIX := _64go
 TARGET_BOARD_FAMILY := f-shikra
 TARGET_BOOTLOADER_BOARD_NAME := shikra
 
@@ -291,10 +291,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ###########
 # Target naming
-PRODUCT_NAME := shikra_64
-PRODUCT_DEVICE := shikra_64
+PRODUCT_NAME := shikra_64go
+PRODUCT_DEVICE := shikra_64go
 PRODUCT_BRAND := qti
-PRODUCT_MODEL := Shikra_64 for arm64
+PRODUCT_MODEL := Shikra_64go for arm64
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
@@ -425,7 +425,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 QTI_CAMERA_PROVIDER_SERVICE := 2.7
 QTI_CAMERA_AON_SERVICE := 1.2
 
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/shikra_64/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/shikra_64go/framework_manifest.xml
 
 # Enable compilation of image_generation_tool
 TARGET_USES_IMAGE_GEN_TOOL := true
@@ -439,7 +439,7 @@ TARGET_USES_QCV := true
 endif
 
 DEVICE_MANIFEST_SKUS := shikra
-DEVICE_MANIFEST_SHIKRA_FILES := device/qcom/shikra_64/manifest_shikra.xml
+DEVICE_MANIFEST_SHIKRA_FILES := device/qcom/shikra_64go/manifest_shikra.xml
 
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
