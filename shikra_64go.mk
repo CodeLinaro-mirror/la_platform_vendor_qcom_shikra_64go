@@ -283,11 +283,11 @@ $(call inherit-product, device/qcom/vendor-common/common64.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # beluga settings
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.beluga.p=0x3 \
-    ro.vendor.beluga.c=0x4800 \
-    ro.vendor.beluga.s=0x900 \
-    ro.vendor.beluga.t=0x240
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.vendor.beluga.p=0x3 \
+#    ro.vendor.beluga.c=0x4800 \
+#    ro.vendor.beluga.s=0x900 \
+#    ro.vendor.beluga.t=0x240
 
 ###########
 # Target naming
@@ -584,6 +584,34 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 #Enable virtualization service
 $(call inherit-product, packages/modules/Virtualization/build/apex/product_packages.mk)
+
+################################################Start Go Config########################################
+#Go variant flag
+TARGET_HAS_LOW_RAM := true
+
+# Enable DM file preopting to reduce first boot time
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
+
+DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
+
+# Reduces GC frequency of foreground apps by 50%
+PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
+# Disable per_app memcg
+PRODUCT_PROPERTY_OVERRIDES += ro.config.per_app_memcg=false
+
+# Configstore is disabled for Android Go targets
+PRODUCT_PACKAGES += disable_configstore
+
+# Add Runtime Resource Overlay package
+PRODUCT_PACKAGES += \
+    FrameworksResTargetGo
+
+# use go packages
+$(call inherit-product, build/target/product/go_defaults.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
+
+################################################End Go Config########################################
 
 ###################################################################################
 # This is the End of target.mk file.
