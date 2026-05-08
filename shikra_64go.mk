@@ -107,8 +107,8 @@ TARGET_USES_QMAA_RECOMMENDED_BOOT_CONFIG := false
 #QMAA tech team flag to override global QMAA per tech team
 #true means overriding global QMAA for this tech area
 #false means using global, no override
-TARGET_USES_QMAA_OVERRIDE_RPMB := false
-TARGET_USES_QMAA_OVERRIDE_GPT  := false
+TARGET_USES_QMAA_OVERRIDE_RPMB := true
+TARGET_USES_QMAA_OVERRIDE_GPT  := true
 TARGET_USES_QMAA_OVERRIDE_DISPLAY := false
 TARGET_USES_QMAA_OVERRIDE_AUDIO   := false
 TARGET_USES_QMAA_OVERRIDE_VIDEO   := false
@@ -145,17 +145,17 @@ TARGET_USES_QMAA_OVERRIDE_PERF := false
 TARGET_USES_QMAA_OVERRIDE_POWER := false
 TARGET_USES_QMAA_OVERRIDE_SENSORS := false
 TARGET_USES_QMAA_OVERRIDE_SYNX := false
-TARGET_USES_QMAA_OVERRIDE_SECUREMSM_TESTS := false
-TARGET_USES_QMAA_OVERRIDE_SMCINVOKE := false
+TARGET_USES_QMAA_OVERRIDE_SECUREMSM_TESTS := true
+TARGET_USES_QMAA_OVERRIDE_SMCINVOKE := true
 TARGET_USES_QMAA_OVERRIDE_SOTER := false
-TARGET_USES_QMAA_OVERRIDE_TFTP := false
-TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := false
-TARGET_USES_QMAA_OVERRIDE_USB := false
+TARGET_USES_QMAA_OVERRIDE_TFTP := true
+TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := true
+TARGET_USES_QMAA_OVERRIDE_USB := true
 TARGET_USES_QMAA_OVERRIDE_DPM := false
 TARGET_USES_QMAA_OVERRIDE_FASTRPC := false
 TARGET_USES_QMAA_OVERRIDE_SPU := false
 TARGET_USES_QMAA_OVERRIDE_UWB := false
-TARGET_USES_QMAA_OVERRIDE_SST_CLIENTS := false
+TARGET_USES_QMAA_OVERRIDE_SST_CLIENTS := true
 TARGET_USES_QMAA_OVERRIDE_SECURITY_TESTS := false
 TARGET_USES_QMAA_OVERRIDE_TIME_SERVICES := false
 TARGET_USES_QMAA_OVERRIDE_VIBRATOR:= false
@@ -206,8 +206,8 @@ TARGET_KERNEL_DLKM_ESE_OVERRIDE := false
 TARGET_KERNEL_DLKM_DATA_OVERRIDE := false
 TARGET_KERNEL_DLKM_DISPLAY_OVERRIDE := false
 TARGET_KERNEL_DLKM_MM_DRV_OVERRIDE := false
-TARGET_KERNEL_DLKM_SECURE_MSM_OVERRIDE := false
-TARGET_KERNEL_DLKM_SECUREMSM_QTEE_OVERRIDE := false
+TARGET_KERNEL_DLKM_SECURE_MSM_OVERRIDE := true
+TARGET_KERNEL_DLKM_SECUREMSM_QTEE_OVERRIDE := true
 TARGET_KERNEL_DLKM_LIMITS_OVERRIDE := false
 TARGET_KERNEL_DLKM_TOUCH_OVERRIDE := false
 TARGET_KERNEL_DLKM_VIDEO_OVERRIDE := false
@@ -283,11 +283,11 @@ $(call inherit-product, device/qcom/vendor-common/common64.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # beluga settings
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.beluga.p=0x3 \
-    ro.vendor.beluga.c=0x4800 \
-    ro.vendor.beluga.s=0x900 \
-    ro.vendor.beluga.t=0x240
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.vendor.beluga.p=0x3 \
+#    ro.vendor.beluga.c=0x4800 \
+#    ro.vendor.beluga.s=0x900 \
+#    ro.vendor.beluga.t=0x240
 
 ###########
 # Target naming
@@ -584,6 +584,34 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 #Enable virtualization service
 $(call inherit-product, packages/modules/Virtualization/build/apex/product_packages.mk)
+
+################################################Start Go Config########################################
+#Go variant flag
+TARGET_HAS_LOW_RAM := true
+
+# Enable DM file preopting to reduce first boot time
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
+
+DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
+
+# Reduces GC frequency of foreground apps by 50%
+PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
+# Disable per_app memcg
+PRODUCT_PROPERTY_OVERRIDES += ro.config.per_app_memcg=false
+
+# Configstore is disabled for Android Go targets
+PRODUCT_PACKAGES += disable_configstore
+
+# Add Runtime Resource Overlay package
+PRODUCT_PACKAGES += \
+    FrameworksResTargetGo
+
+# use go packages
+$(call inherit-product, build/target/product/go_defaults.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
+
+################################################End Go Config########################################
 
 ###################################################################################
 # This is the End of target.mk file.
