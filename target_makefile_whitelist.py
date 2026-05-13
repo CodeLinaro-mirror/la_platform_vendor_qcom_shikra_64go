@@ -108,6 +108,7 @@ VENDOR_MACRO_WHITELIST = {
     "vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_board.mk",
     "vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_board.mk",
     "vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_board.mk",
+    "vendor/qcom/opensource/datarmnet-bam/datarmnet_bam_dlkm_vendor_board.mk"
     "vendor/qcom/opensource/display-drivers/display_driver_board.mk",
     "vendor/qcom/opensource/dsp-kernel/dsp_kernel_board.mk",
     "vendor/qcom/opensource/eva-kernel/eva_kernel_board.mk",

@@ -39,6 +39,7 @@ def define_techpack_modules(target, msm_target, variant):
         "//vendor/qcom/opensource/datarmnet-ext/sch:{}_sch".format(target),
         "//vendor/qcom/opensource/datarmnet-ext/shs:{}_shs".format(target),
         "//vendor/qcom/opensource/datarmnet-ext/wlan:{}_wlan".format(target),
+	"//vendor/qcom/opensource/datarmnet-bam:{}_bam".format(target),
         "//vendor/qcom/opensource/mm-drivers/sync_fence:{}_sync_fence".format(target),
         "//vendor/qcom/opensource/mm-drivers/hw_fence:{}_msm_hw_fence".format(target),
         "//vendor/qcom/opensource/mm-drivers/hfi_core:{}_msm_hfi_core".format(target),
