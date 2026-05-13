@@ -56,6 +56,7 @@ def define_techpack_modules(target, msm_target, variant):
         "//vendor/qcom/opensource/wlan/qcacld-3.0:{}_qca_cld_peach-v2".format(target),
         "//vendor/qcom/opensource/wlan/qcacld-3.0:{}_qca_cld_kiwi-v2".format(target),
         "//vendor/qcom/opensource/wlan/qcacld-3.0:{}_qca_cld_wcn7750".format(target),
+        "//vendor/qcom/opensource/wlan/qcacld-3.0:{}_qca_cld_wlan".format(target),
         "//vendor/qcom/opensource/wlan/platform:{}_cnss2".format(target),
         "//vendor/qcom/opensource/wlan/platform:{}_cnss_plat_ipc_qmi_svc".format(target),
         "//vendor/qcom/opensource/wlan/platform:{}_icnss2".format(target),
