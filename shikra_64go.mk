@@ -579,9 +579,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-#Enable virtualization service
-$(call inherit-product, packages/modules/Virtualization/build/apex/product_packages.mk)
-
 ################################################Start Go Config########################################
 #Go variant flag
 TARGET_HAS_LOW_RAM := true
