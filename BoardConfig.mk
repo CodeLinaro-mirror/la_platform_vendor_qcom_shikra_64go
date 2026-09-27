@@ -157,11 +157,6 @@ BOARD_KERNEL_CMDLINE += qcom_geni_serial.con_enabled=0
 endif
 endif
 
-#Enabling Protected VM for AVF
-BOARD_BOOTCONFIG += \
-    androidboot.hypervisor.protected_vm.supported=true \
-    androidboot.hypervisor.version=gunyah
-
 #Enabling QSPA
 BOARD_BOOTCONFIG += androidboot.vendor.qspa=true
 

@@ -514,13 +514,6 @@ $(warning "BOARD_VNDK_VERSION = $(BOARD_VNDK_VERSION), RECOVERY_SNAPSHOT_VERSION
 
 TARGET_MOUNT_POINTS_SYMLINKS := false
 
-# Fingerprint feature
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
-
-# system prop for enabling QFS (QTI Fingerprint Solution)
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qfp=true
 #target specific runtime prop for qspm
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qspm.enable=true
@@ -578,9 +571,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
-#Enable virtualization service
-$(call inherit-product, packages/modules/Virtualization/build/apex/product_packages.mk)
 
 ################################################Start Go Config########################################
 #Go variant flag
